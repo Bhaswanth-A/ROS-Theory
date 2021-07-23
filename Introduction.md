@@ -16,9 +16,10 @@ ROS Graph is a convenient mathematical way of representing a collection of progr
 ## roscore
 
 roscore is a service that provides connection information to nodes so that they can find and transmit/receive messages with other nodes. Every node connects to roscore at startup to register details of the message streams it publishes and the streams to which it wishes to subscribe. When a new node appears, roscore provides it with the information that it needs to form a direct connection with other nodes publishing and subscribing to the same message topics.
-<img src=":/b6d71ebd495c4b3099c1da803dedd808" alt="a6592e19005d82ecce6fa7269e84ef52.png" width="530" height="148" class="jop-noMdConv">
 
-![3bbcd0784d2f51b9ccaa0862339d7e37.png](:/b5ddbc2b4c1b4560ab8fac837ed0adf3)
+![](/Images/roscore_1.png)
+
+![](/Images/roscore_2.png)
 
 ## catkin
 
@@ -34,7 +35,7 @@ Running catkin_make will create two new directories - devel and build, along wit
 - Build is where catkin will store the results of some of its work such as libraries, etc.
 - Devel contains a number of files and directories, including setup files. Running these setup files configures the system to use the workspace and run the necessary code. Hence it is necessary to source your workspace every time you open a new shell.
 
-![ddf5b69c9b693f7255860945af50cc5d.png](:/6412c4861963464a8fb1087c58886a8f)
+![](/Images/workspaces.png)
 
 ## ROS Packages
 
@@ -48,7 +49,7 @@ For a package to be considered a catkin package, it must meet the following requ
 - Must contain CMakeLists.txt file - Describes how to build the code and where to install it
 - Each package must have its own folder
 
-![801563db0548084fb7d49c2b6c1825d2.png](:/630d13393da24054a487f777c270897f)
+![](/Images/package.png)
 
 All packages must be created inside `~/catkin_ws/src`
 
@@ -57,7 +58,7 @@ All packages must be created inside `~/catkin_ws/src`
 To create a package the following syntax can be used:
 `catkin_create_pkg <package_name> [depend1] [depend2] [depend3]`
 
-![d201d7297fe1686fd1ea8dd6abba8b2b.png](:/b3bbe61df5194678a3dda999a1870aaa)
+![](/Images/create_package.png)
 
 On creating a new package, the *CMakeLists.txt* file, *package.xml* file and the *src* directory come built-in automatically.
 
@@ -69,22 +70,22 @@ Once a package has been created, it needs to be compiled in order for it to work
 
 To add your workspace to the ROS environment, you need to source the generated setup file.
 
-![d0dc604a3c6a26d902dc132369d684fe.png](:/0cea911c8ddd4358b8016dda8cdf64a8)
+![](/Images/source.png)
 
 Once the package has been created, the Python nodes can be saved in the src directory of the package.
 
-![caa3c644a5d0812a616cadf54e75e3cc.png](:/511dd5e3721f47a3965b4590c7c04129)
+![](/Images/src.png)
 
 ### Package dependencies
 
-![22c65c3a990982b869760c7dcb309de7.png](:/cb89cc4632464036aa7a3425413d923b)
+![](/Images/depends_1.png)
 
 `rospack depends1 beginner_tutorials` returns a list of the first-order dependencies
 `rospack depends beginner_tutorials` returns a list of all dependencies, direct and indirect.
 
 These dependencies are stored in the package.xml file.
 
-![7a2a4a4433ffbcee189f5681997f3337.png](:/df86f39ec2104711bb4664e394e6de70)
+![](/Images/depends_2.png)
 
 ## package.xml
 
@@ -110,7 +111,7 @@ The following tags need to be nested within the &lt; package &gt; tag to make th
 - *&lt;maintainer&gt;* \- The name of the person(s) that is/are maintaining the package
 - *&lt;license&gt;* \- The software license(s) under which the code is released.
 
-![23be2c6c1c0295a0d397d3ad5b4577d7.png](:/91300c1cc1394d18a8b0d5550276cef4)
+![](/Images/package_xml.png)
 
 ### Dependencies
 
@@ -121,7 +122,7 @@ These four types of dependencies are specified using the following respective ta
 - &lt;run_depend&gt;: Run Dependencies specify which dependencies are needed to run code in this package, or build libraries against this package.
 - &lt;test_depend&gt;: Test Dependencies specify only additional dependencies for unit tests. They should never duplicate any dependencies already mentioned as build or run dependencies.
 
-![238a6b2d8f881889237da85adce35651.png](:/b253a9aeaead4f50a561c67e3eb48aee)
+![](/Images/xml_2.png)
 
 ### Metapackage
 
