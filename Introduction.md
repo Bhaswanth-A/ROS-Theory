@@ -11,7 +11,7 @@ Let us consider the following example in order to understand it better. Suppose 
 
 ROS Graph is a convenient mathematical way of representing a collection of programs and messages of a ROS system, typically as a graph. The various ROS programs, called nodes, communicate with each other by sending/receiving messages. The nodes in a ROS Graph are connected by "topics", which represents a stream of messages that nodes use to communicate with each other.
 
-![05337bba41e6bf89cbd4b752c0b46caa.png](:/1f429d6148df4e34aadb4230ec4dcd52)
+![](/Images/rosgraph.png)
 
 ## roscore
 
@@ -127,4 +127,8 @@ These four types of dependencies are specified using the following respective ta
 
 A metapackage is a group of multiple packages, with the following export tag in package.xml.
 
-![68490d1933f60f6e4074d0e7f5ffc645.png](:/bca326a8030d49a885cf6aaeb50fdc1e)
+```html
+<export>
+	<metapackage />
+</export>
+```
