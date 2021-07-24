@@ -237,7 +237,7 @@ We need to make the necessary changes to *package.xml* file and *CMakeList.txt* 
 ### Creating a Server
 
 ##### Code
-```python2
+```python
 #! /usr/bin/python2
 
 import rospy
