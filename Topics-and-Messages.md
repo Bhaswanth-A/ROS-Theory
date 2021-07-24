@@ -158,4 +158,5 @@ Behind the scenes, the subscriber passes this information on to roscore and trie
 ![](/Images/sub_3.png)
 
 On VS Code - Output:
+
 ![](/Images/sub_4.png)
