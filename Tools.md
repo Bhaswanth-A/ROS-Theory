@@ -1,6 +1,6 @@
-# ROS Tools
+# 2. ROS Tools
 
-## rosbash
+## 2.1 rosbash
 
 Documentation- http://wiki.ros.org/rosbash
 rosbash is a package that contains some useful bash functions and adds tab-completion to a large number of the basic ROS utilities. When you source your setup file, you will implicitly get all bash-specific commands.
@@ -31,7 +31,7 @@ rosbash includes the following command-line utilities:
     ![](/Images/roscp.png)
     
 
-## Common File system tools
+## 2.2 Common File system tools
 
 1.  rospack:
     Documentation- https://docs.ros.org/en/independent/api/rospkg/html/rospack.html
@@ -62,7 +62,7 @@ rosbash includes the following command-line utilities:
 4.  rosparam:
     
 
-## rosrun
+## 2.3 rosrun
 
 rosrun is a ROS command-line utility that searches for a package for the requested program and runs it.
 Syntax-
@@ -76,7 +76,7 @@ rosrun displays a sequence of timestamps, which in the above picture, prints the
 In UNIX, every program has a stream called standard output, or stdout. When a ‘Hello World’ program is run in a terminal, its stdout stream is sent and received by its parent terminal program which prints the text in a terminal emulator window.
 So running a simple ‘Hello World’ program in ROS will have two nodes - one node that sends the stream of messages to other nodes, and the other node that sends messages to the terminal emulator program node.
 
-## roslaunch
+## 2.4 roslaunch
 
 Although rosrun is great for starting single ROS nodes, most robot systems end up running tens or hundreds of nodes simultaneously. Since it would not be practical to call rosrun on each of these, ROS includes a tool for starting collections of nodes, called roslaunch.
 
@@ -91,7 +91,7 @@ roslaunch operates on launch files instead of nodes. Launch files are XML files 
 roslaunch includes several other features such as the ability to launch programs on other computers in the network via ssh, to automatically respawn nodes that crash, etc.
 roslaunch will also automatically run roscore, if it doesn’t already exist. However, pressing Ctrl+C will exit roscore as well, along with roslaunch.
 
-### Creating a launch file
+### 2.4.1 Creating a launch file
 
 ```html
 <launch>
@@ -119,16 +119,16 @@ Lines 11-14: start the mimic node with the topics input and output renamed to tu
 
 ![](/Images/roslaunch_3.png)
 
-## ROS Nodes
+## 2.5 ROS Nodes
 
 A node is a ROS program that performs a certain task. Nodes are combined together into a graph and communicate with each other using topics.
 
-### Launching a node
+### 2.5.1 Launching a node
 
 Syntax-
 `rosrun <package_name> <node_name> __name:=new_node_name __ns:=name_space topic:=new_topic`
 
-### Controlling 2 turtles using different keyboards
+### 2.5.2 Controlling 2 turtles using different keyboards
 
 ![](/Images/1.png)
 
@@ -138,7 +138,7 @@ Syntax-
 
 ![](/Images/3.png)
 
-### Using rosnode
+### 2.5.3 Using rosnode
 
 The rosnode command is used to display information about ROS nodes that are currently running.
 
