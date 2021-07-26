@@ -1,6 +1,6 @@
-# ROS Services
+# 5. ROS Services
 
-## What are Services?
+## 5.1 What are Services?
 
 Services are synchronous calls, which when called by one node executes a function in another node. They are used only when a function/task needs to be executed occassionally, say when a robot needs to perform a very discrete task such as taking a high resolution picture using a camera, etc.
 
@@ -8,7 +8,7 @@ Services are synchronous calls, which when called by one node executes a functio
 
 A **Server** provides a service by responding to a service call, and a **Client** requests for a service and accesses the service response.
 
-## Service files
+## 5.2 Service files
 
 Service files have an input and output call, and have the extension `.srv`. These files are present in the **srv** directory of a package. Here's how a typical service file is defined
 
@@ -58,13 +58,13 @@ After the necessary changes are made, we need to run `catkin_make` or `catkin_ma
 
 Running `catkin_make` will create 2 additional classes for the service file as well. For example, if a service file is named add\_two\_int.srv, then the two classes add\_two\_intResponse and add\_two\_intRequest are created along with the previously existing add\_two\_int class. These classes allow us to interact with the service by calling for a *Response* or a *Request*.
 
-## Using rossrv
+## 5.3 Using rossrv
 
 Documentation - http://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv
 
 ![](/Images/serv_2.png)
 
-## Using rosservice
+## 5.4 Using rosservice
 
 ![](/Images/serv_3.png)
 
@@ -74,7 +74,7 @@ Documentation - http://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv
 > `rosservice` is a tool that allows us to interact with *Servers* and *Clients* that are currently active.
 > Reference - https://answers.ros.org/question/349148/rossrv-vs-rosservice/
 
-## Creating a simple Server
+## 5.5 Creating a simple Server
 
 Before we get into creating a server, let us take a look at out service definition file.
 
@@ -112,7 +112,7 @@ print('Server is ready')
 rospy.spin()
 ```
 
-### Code Explanation
+### 5.5.1 Code Explanation
 
 We import the `add_two_intResponse` class as we are writing code for a Server, which provides a response for the service that is called.
 
@@ -126,7 +126,7 @@ The function **add_ints** takes a variable as a request and returns the sum of '
 
 ![](/Images/server_3.png)
 
-## Creating a simple Client
+## 5.6 Creating a simple Client
 
 Like all python nodes, the client service file should also be created under the `src` directory of a package.
 
@@ -150,7 +150,7 @@ response = add_two_ints(req)
 print(response.sum)
 ```
 
-### Code Explanation
+### 5.6.1 Code Explanation
 
 The class *add\_two\_intRequest* is imported in a client node as we need to send a *Request* to the Server.
 
@@ -181,11 +181,11 @@ The class *add\_two\_intRequest* is imported in a client node as we need to send
 
 *Refer to the server code above to better understand how the service is being provided and why it returns the above outputs.*
 
-# A deeper dive into Services
+## 5.7 A deeper dive into Services
 
 Let us take a look at a few other interesting things that we can do using services.
 
-## Spawning 2 turtles in the same node
+### 5.7.1 Spawning 2 turtles in the same node
 
 Here's a list of the services associated with turtlesim.
 ![](/Images/spawn_1.png)
@@ -198,7 +198,7 @@ In order to spawn two turtles, we call a service and pass in the necessary param
 
 ![](/Images/spawn_3.png)
 
-## Getting laser scan data using gazebo
+### 5.7.2 Getting laser scan data using gazebo
 
 Spawn your turtlebot3 on gazebo by running the following command
 `roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch`
@@ -234,7 +234,7 @@ float32 distance
 
 We need to make the necessary changes to *package.xml* file and *CMakeList.txt* file. This has been discussed above.
 
-### Creating a Server
+#### Creating a Server
 
 ##### Code
 ```python
@@ -278,7 +278,7 @@ rospy.spin()
 
 ![](/Images/laser_server.png)
 
-### Creating a Client
+#### Creating a Client
 
 ##### Code
 ```python
