@@ -21,9 +21,10 @@ Listed below are the prerequisites for learning ROS and using this documentation
 
 1. Introduction
 2. Tools
-3. Topics and Messages
-4. Services
-5. Actions
+3. Topics
+4. Messages
+5. Services
+6. Actions
 
 
 ## Reference
