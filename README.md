@@ -31,4 +31,4 @@ Listed below are the prerequisites for learning ROS and using this documentation
 
 ROS Wiki - http://wiki.ros.org/ROS/Tutorials
 
-Book - Morgan Quigley Programming Robots with ROS
+Book - Programming Robots with ROS: A Practical Introduction to the Robot Operating System
