@@ -3,19 +3,20 @@
 ## 1.1 What is ROS?
 
 ROS stands for Robot Operating System. Although the name implies that it is an OS, it is not. Rather, it is a framework that helps integrate the various parts of a robot by setting up communication between hardware and software of your robot, and between different processes going on within the software.
+
 Let us consider the following example in order to understand it better. Suppose you are building a simple robot for a ‘fetch an item’ task, in which your robot needs to navigate a given environment, find the required item and bring it back to a specified location. The robot has various parts that perform different functions such as navigation, computer vision, etc. These different parts of the robot might be coded in different ways such as Python, OpenCV for computer vision, MATLAB etc. However, these parts cannot talk to each other, as they are written in different languages, due to which the robot will not know when it should stop/resume a certain task assigned to it. This is where ROS comes in. ROS helps integrate these various parts, thereby facilitating easy communication. The different parts now receive messages from other parts, thereby performing their functions more efficiently.
 
 * * *
 
 ## 1.2 ROS Graph
 
-ROS Graph is a convenient mathematical way of representing a collection of programs and messages of a ROS system, typically as a graph. The various ROS programs, called nodes, communicate with each other by sending/receiving messages. The nodes in a ROS Graph are connected by "topics", which represents a stream of messages that nodes use to communicate with each other.
+ROS Graph is a convenient way of representing the various programs, messages and message streams of a ROS system as a graph. The various ROS programs, called nodes, communicate with each other by sending/receiving messages. The nodes in a ROS Graph are connected by "topics", which represents a stream of messages that nodes use to communicate with each other.
 
 ![](/Images/rosgraph.png)
 
 ## 1.3 roscore
 
-roscore is a service that provides connection information to nodes so that they can find and transmit/receive messages with other nodes. Every node connects to roscore at startup to register details of the message streams it publishes and the streams to which it wishes to subscribe. When a new node appears, roscore provides it with the information that it needs to form a direct connection with other nodes publishing and subscribing to the same message topics.
+`roscore` is a service that provides connection information to nodes so that they can find and transmit/receive messages with other nodes. Every node connects to roscore at startup to register details of the message streams it publishes and the streams to which it wishes to subscribe. When a new node appears, roscore provides it with the information that it needs to form a direct connection with other nodes publishing and subscribing to the same message topics.
 
 ![](/Images/roscore_1.png)
 
@@ -23,7 +24,7 @@ roscore is a service that provides connection information to nodes so that they 
 
 ## 1.4 catkin
 
-catkin is the ROS build system, which is a set of tools that ROS uses to generate executable programs, scripts, libraries, etc. catkin comprises a set of CMake macros and custom Python scripts. Every catkin directory will contain two files - CMakeLists.txt and package.xml, that you need to make changes in order for things to work properly.
+catkin is the ROS build system, which is a set of tools that ROS uses to generate executable programs, scripts, libraries, etc. catkin comprises a set of CMake macros and custom Python scripts. Every catkin directory will contain two files - ***CMakeLists.txt*** and ***package.xml***, that you need to make changes in order for things to work properly.
 
 ## 1.5 Workspaces
 
@@ -40,8 +41,8 @@ Running catkin_make will create two new directories - devel and build, along wit
 ## 1.6 ROS Packages
 
 Documentation - http://wiki.ros.org/ROS/Tutorials/CreatingPackage
-ROS software is organized into packages, which are built into the workspace and contained in the `src` directory.
-The ROS ecosystem comprises thousands of publicly available packages in open repositories.
+
+Packages are projects that contain your ROS work. A workspace can have several packages, and all of them are located inside the `src` directory.
 
 For a package to be considered a catkin package, it must meet the following requirements-
 
@@ -51,11 +52,12 @@ For a package to be considered a catkin package, it must meet the following requ
 
 ![](/Images/package.png)
 
-All packages must be created inside `~/catkin_ws/src`
+>All packages must be created inside `~/catkin_ws/src`
 
 ### 1.6.1 Creating a catkin package
 
 To create a package the following syntax can be used:
+
 `catkin_create_pkg <package_name> [depend1] [depend2] [depend3]`
 
 ![](/Images/create_package.png)
@@ -65,8 +67,10 @@ On creating a new package, the *CMakeLists.txt* file, *package.xml* file and the
 ### 1.6.2 Building the catkin workspace
 
 Once a package has been created, it needs to be compiled in order for it to work.
--`catkin_make` \- Will compile the entire src directory and needs to be issued only in the `catkin_ws` directory.
--`catkin_make --only-pkg-with-deps <package_name>` \- Will only compile the selected package.
+
+- `catkin_make` \- Will compile the entire src directory and needs to be issued only in the `catkin_ws` directory.
+
+- `catkin_make --only-pkg-with-deps <package_name>` \- Will only compile the selected package.
 
 To add your workspace to the ROS environment, you need to source the generated setup file.
 
@@ -81,6 +85,7 @@ Once the package has been created, the Python nodes can be saved in the src dire
 ![](/Images/depends_1.png)
 
 `rospack depends1 beginner_tutorials` returns a list of the first-order dependencies
+
 `rospack depends beginner_tutorials` returns a list of all dependencies, direct and indirect.
 
 These dependencies are stored in the package.xml file.
@@ -90,6 +95,7 @@ These dependencies are stored in the package.xml file.
 ## 1.7 package.xml
 
 Documentation: http://wiki.ros.org/catkin/package.xml
+
 The package.xml file provides meta information about the package such as package name, version number, authors, etc.
 
 What does a package.xml file contain?
@@ -123,13 +129,3 @@ These four types of dependencies are specified using the following respective ta
 - &lt;test_depend&gt;: Test Dependencies specify only additional dependencies for unit tests. They should never duplicate any dependencies already mentioned as build or run dependencies.
 
 ![](/Images/xml_2.png)
-
-## 1.8 Metapackage
-
-A metapackage is a group of multiple packages, with the following export tag in package.xml.
-
-```html
-<export>
-	<metapackage />
-</export>
-```
