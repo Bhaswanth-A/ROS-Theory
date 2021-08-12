@@ -8,6 +8,19 @@ Services are synchronous calls, which when called by one node executes a functio
 
 A **Server** provides a service by responding to a service call, and a **Client** requests for a service and accesses the service response.
 
+> ## What is the difference between Services and Messges?
+>
+> ROS messages, which are transported using publishers and subscribers, are used whenever we need data to flow constantly and when we want to act on this data asynchronously.
+ROS services, on the other hand, are used only when we require data at specific time or when we want a task to be executed only at particular instances. 
+>
+> To better understand this, take a look at the following example.
+>
+> 1. We have a robot that simulates it's environment in real-time. In such cases, we would use publishers/subscribers to send messages as that data flow needs to be constant. Also, we would want the robot to do other tasks as well, apart from just reading real-time data. If we use services, then the server/client would have to wait for a response/request and blocks the other code in the node, preventing other tasks from being executed,
+>2. We have a robot that detects people in front of it. We would use services here as the node will wait for a person to come in front of it, then sends a request to the server and blocks the code while waiting for a response. Using messages here is pointless as we don't want to continuously check for people in front of the robot (it's just a one-time task).
+>
+>Reference: https://stackoverflow.com/questions/29458467/ros-service-and-message#:~:text=It%20is%20a%20similar%20example,the%20rest%20of%20its%20job.
+
+
 ## 5.2 Service files
 
 Service files have an input and output call, and have the extension `.srv`. These files are present in the **srv** directory of a package. Here's how a typical service file is defined
@@ -25,7 +38,7 @@ In order for the service files to run, a few changes have to be made in the *pac
 
 **In *package.xml***
 
-```txt
+```html
 # The following lines need to be added at the end of the file
   <build_depend>message_generation</build_depend>
   <exec_depend>message_runtime</exec_depend>
@@ -34,7 +47,7 @@ In order for the service files to run, a few changes have to be made in the *pac
 **In *CMakeLists.txt***
 Modify the file to make the following changes, if not done earlier
 
-```txt
+```py
 # Modify the existing line
 find_package(catkin REQUIRED COMPONENTS
   roscpp
@@ -46,7 +59,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 > `message_generation` was added in both the files and is done while creating messages as well. It works for both msg and srv.
 
-```txt
+```py
 add_service_files(
   FILES
   Service1.srv
