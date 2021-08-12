@@ -1,7 +1,12 @@
 # 3. ROS Topics
 
-ROS Topics represent a stream of messages that flow between two or more nodes. Topics are based on the publish/subscribe mechanism, facilitating easy communication between nodes. Before nodes start to transmit data over topics, they must first advertise the topic name and the type of messages to be sent. Then they can publish to the topic. Nodes that want to receive the transmitted messages can subscribe to that topic by making a request to roscore. After subscribing, all the messages on the topic are delivered to the topic that made the request.
-In ROS, all messages on the same topic must have the same data type.
+ROS Topics represent a stream of messages that flow between two or more nodes. The nodes act as publishers or subscribers of messages - publisher nodes send messages through topics and subscriber nodes receive the messages transmitted through a particular topic. 
+
+- A publisher node would have to register the topic name and the type of messages, and only then it can publish to a topic. 
+
+- A subscriber node would make a request to roscore to get details about a topic in order to receive the transmitted messages sent through it.
+
+>In ROS, all messages on the same topic must have the same data type.
 
 ## 3.1 Using rostopic
 
@@ -23,7 +28,7 @@ rostopic hz reports the rate at which data is being published. The below image t
 
 ## 4.1 ROS msg
 
-Message descriptions that flow between nodes are stored as .msg files in the msg subdirectory of a package. There are 2 parts to a .msg file - fields and constants. Fields are the data that is sent inside of the message. Constants are useful values that can be used to interpret those fields.
+The message definition file has an extension of `.msg` and all such files need to be located inside the `msg` directory of a package.
 
 ## 4.2 Creating a ROS msg
 
@@ -39,7 +44,7 @@ Open *package.xml* and make sure the following lines are uncommented.
 ```
 Now we need to make changes to the *CMakeLists.txt* file.
 
-```txt
+```py
 # Modify the existing text
 find_package(catkin REQUIRED COMPONENTS
    roscpp
@@ -48,20 +53,20 @@ find_package(catkin REQUIRED COMPONENTS
    message_generation
 )
 ```
-```txt
+```py
 catkin_package(
   ...
   CATKIN_DEPENDS message_runtime ...
   ...)
 ```
-```txt
+```py
 add_message_files(
   FILES
   Message1.msg
   Message2.msg
 )
 ```
-```txt
+```py
 generate_messages(
   DEPENDENCIES
   std_msgs
@@ -69,7 +74,6 @@ generate_messages(
 ```
 Now since we have made a few changes to our package and created new files/directories, we need to compile out workspace by running `catkin_make` or `catkin_make --only-pkg-with-deps <package_name>`.
 
-The Python script will be created in `~/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/msg`.
 
 ## 4.3 Using rosmsg
 
