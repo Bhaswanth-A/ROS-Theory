@@ -106,14 +106,19 @@ while True:
 ### 4.4.1 Code explanation:
 
 Line 1: `#! /usr/bin/python2` is known as the shebang. It lets the kernel know that this is a Python file and that it should be passed into the Python interpreter.
+
 Line 3: `import rospy` appears in every ROS node and imports some basic functionalities, classes and functions.
+
 Line 4: this line allows us to reuse the `std_msgs/String` message type for publishing.
 
 ![](/Images/pub_1.png)
 
 Line 8: This is used to initialize a ROS node and the node takes the name that you give it. anonymous = True ensures that you have a unique name by adding random numbers to the end of name.
+
 Line 9: pub here is an object of the class Publisher, and allows us to publish to any topic of any message type that you give it. queue_size limits the amount of queued messages if any subscriber is not receiving them fast enough.
+
 Line 11: This line creates an object r of the class Rate. When r.sleep() is called, it sleeps just long enough for the loop to run at the desired rate. When the argument 10 is passed, it goes through the loop 10 times per second.
+
 Line 14: This is used to publish the desired message to the topic.
 
 ![](/Images/pub_2.png)
@@ -145,14 +150,19 @@ rospy.spin()
 ### 4.5.1 Code explanation:
 
 Line 1: `#! /usr/bin/python2` is known as the shebang. It lets the kernel know that this is a Python file and that it should be passed into the Python interpreter.
+
 Line 3: `import rospy` appears in every ROS node and imports some basic functionalities, classes and functions.
+
 Line 4: this line allows us to reuse the `std_msgs/String` message type for publishing.
 
 ![](/Images/sub_1.png)
 
 Line 6: This is used to initialize a ROS node and the node takes the name that you give it. anonymous = True ensures that you have a unique name by adding random numbers to the end of name.
+
 Line 8-9: This is a callback function. Once a node has subscribed to a topic, everytime a message arrives on it, the associated callback function is called with the message as it’s parameter.
+
 Line 11: In this line, we subscribe to the topic, giving it the name of the topic, message type and callback function as its arguments.
+
 Line 13: This basically instructs ROS to loop over again, once a subscription has been made.
 
 Behind the scenes, the subscriber passes this information on to roscore and tries to make a direct connection with the publishers of this topic. If the topic does not exist, or if the type is wrong, there are no error messages: the node will simply wait until messages start being published on the topic.
