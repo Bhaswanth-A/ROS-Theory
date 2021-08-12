@@ -84,7 +84,9 @@ Documentation - http://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv
 > ### Difference between rossrv and rosservice
 > 
 > `rossrv` is a tool that provides us with information about all files ending in *.srv*
+> 
 > `rosservice` is a tool that allows us to interact with *Servers* and *Clients* that are currently active.
+> 
 > Reference - https://answers.ros.org/question/349148/rossrv-vs-rosservice/
 
 ## 5.5 Creating a simple Server
@@ -184,7 +186,7 @@ The class *add\_two\_intRequest* is imported in a client node as we need to send
 
 `print(response.sum)`: The sum is then printed on the screen.
 
-**NOTE - The server node needs to be running while a client node is being executed.**
+>**NOTE - The server node needs to be running while a client node is being executed.**
 
 **Execution:**
 
@@ -328,7 +330,7 @@ while not rospy.is_shutdown():
 
 `print(result.distance)` : The distance is printed on the screen.
 
-**NOTE - The server node needs to be running while a client node is being executed.**
+>**NOTE - The server node needs to be running while a client node is being executed.**
 
 ##### Execution
 
