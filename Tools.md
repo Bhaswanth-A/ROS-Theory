@@ -3,6 +3,7 @@
 ## 2.1 rosbash
 
 Documentation- http://wiki.ros.org/rosbash
+
 rosbash is a package that contains some useful bash functions and adds tab-completion to a large number of the basic ROS utilities. When you source your setup file, you will implicitly get all bash-specific commands.
 
 rosbash includes the following command-line utilities:
@@ -34,7 +35,9 @@ rosbash includes the following command-line utilities:
 ## 2.2 Common File system tools
 
 1.  rospack:
+
     Documentation- https://docs.ros.org/en/independent/api/rospkg/html/rospack.html
+    
     rospack is a command-line tool that is used to get information about ROS packages available on the filesystem. Below are listed some common rospack options-
     
     - `rospack find` \- returns the absolute path to the package
@@ -43,9 +46,10 @@ rosbash includes the following command-line utilities:
     - `rospack export` \- returns flags necessary for building and linking against a package
     - `rospack list` \- returns a list of all ROS packages on the filesystem
     
-    ![](/Images/rospack.png)
+        ![](/Images/rospack.png)
     
 2.  roscd:
+ 
     roscd allows us to change directory or subdirectory using a package name, stack name, or special location.
     
     ![](/Images/roscd.png)
@@ -55,6 +59,7 @@ rosbash includes the following command-line utilities:
     ![](/Images/roscd_2.png)
     
 3.  rosls:
+  
     rosls allows you to view the contents of a package, stack or location.
     
     ![](/Images/rosls.png)
@@ -65,7 +70,9 @@ rosbash includes the following command-line utilities:
 ## 2.3 rosrun
 
 rosrun is a ROS command-line utility that searches for a package for the requested program and runs it.
+
 Syntax-
+
 `rosrun <package> <executable>`
 
 ![](/Images/rosrun_1.png)
@@ -73,8 +80,6 @@ Syntax-
 ![](/Images/rosrun_2.png)
 
 rosrun displays a sequence of timestamps, which in the above picture, prints the string ‘Hello World’ 10 times per second. This reduced frequency helps in recognizing any changes in the messages.
-In UNIX, every program has a stream called standard output, or stdout. When a ‘Hello World’ program is run in a terminal, its stdout stream is sent and received by its parent terminal program which prints the text in a terminal emulator window.
-So running a simple ‘Hello World’ program in ROS will have two nodes - one node that sends the stream of messages to other nodes, and the other node that sends messages to the terminal emulator program node.
 
 ## 2.4 roslaunch
 
@@ -121,11 +126,12 @@ Lines 11-14: start the mimic node with the topics input and output renamed to tu
 
 ## 2.5 ROS Nodes
 
-A node is a ROS program that performs a certain task. Nodes are combined together into a graph and communicate with each other using topics.
+A node is a ROS program that performs a certain task. Differnent nodes communicate with each other by sending messages through topics.
 
 ### 2.5.1 Launching a node
 
 Syntax-
+
 `rosrun <package_name> <node_name> __name:=new_node_name __ns:=name_space topic:=new_topic`
 
 ### 2.5.2 Controlling 2 turtles using different keyboards
@@ -134,7 +140,7 @@ Syntax-
 
 ![](/Images/2.png)
 
-**NOTE** \- We cannot have 2 turtlesims in the same namespace. Take a look at the below image to see what happens if we initialize 2 turtlebots in the same namespace.
+>**NOTE** \- We cannot have 2 turtlesims in the same namespace. Take a look at the below image to see what happens if we initialize 2 turtlebots in the same namespace.
 
 ![](/Images/3.png)
 
@@ -146,4 +152,4 @@ The rosnode command is used to display information about ROS nodes that are curr
 
 ![](/Images/5.png)
 
-rosout is the console log report mechanism in ROS. Documentation - http://wiki.ros.org/rosout
+>rosout documentation - http://wiki.ros.org/rosout
