@@ -50,7 +50,7 @@ rosbash includes the following command-line utilities:
     
 2.  roscd:
  
-    roscd allows us to change directory or subdirectory using a package name, stack name, or special location.
+    roscd allows us to change directory or subdirectory using a package name, stack name, or special location. You can only move to the packages installed into your ROS system.
     
     ![](/Images/roscd.png)
     
