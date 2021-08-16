@@ -1,6 +1,6 @@
-# ROS Actions
+# 6. ROS Actions
 
-## Introduction
+## 6.1 Introduction
 
 Actions are asynchronous calls in ROS, which means that you do not have to wait for a particular task to be finished and you can also do other tasks simultaneously.
 
@@ -29,7 +29,7 @@ There are 5 Topics provided by an Action Server:
 
 >**NOTE** - We cannot execute two actions at the same time. Doing so will cancel the previous action from being executed.
 
-## Action files
+## 6.2 Action files
 The Action definition files have an extension of `.action` and is used to specify the format of _goal_, _result_, _feedback_ message. These files are present in the **action** directory of a package. Here's how a typical service file is defined
 
 ```BASH
@@ -139,7 +139,7 @@ float32 feed
 ```
 ![](/Images/act_files_2.png)
 
-## Creating a simple Server
+## 6.3 Creating a simple Server
 
 **Code:**
 
@@ -196,7 +196,7 @@ Send goals via terminal:
 
 ![](/Images/act_server.png)
 
-## Creating a simple Client
+## 6.4 Creating a simple Client
 
 **Code:**
 
@@ -238,7 +238,7 @@ while not rospy.is_shutdown():
 	# sleep
 	r.sleep()
 ```
-### Explanation
+### 6.4.1 Explanation
 
 `client.wait_for_result()`: This will wait until the action is complete and blocks the remaining code. This won't allow you to continue to work on your thread.
 
