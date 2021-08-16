@@ -1,6 +1,6 @@
 # 3. ROS Topics
 
-ROS Topics represent a stream of messages that flow between two or more nodes. The nodes act as publishers or subscribers of messages - publisher nodes send messages through topics and subscriber nodes receive the messages transmitted through a particular topic. 
+ROS Topics represent a stream of messages that connect two or more nodes. The nodes act as publishers or subscribers of messages - publisher nodes send messages through topics and subscriber nodes receive the messages transmitted through a particular topic. 
 
 - A publisher node would have to register the topic name and the type of messages, and only then it can publish to a topic. 
 
