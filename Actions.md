@@ -22,7 +22,7 @@ The ActionClient and ActionServer communicate via a "ROS Action Protocol", which
 
 There are 5 Topics provided by an Action Server:
 1. **goal**: User (or Client) sends a goal to the Server to initiate the action.
-2. **cancel**: User sends a signal under cancel topic to interrupt or stop an action from being executed,
+2. **cancel**: User sends a signal under cancel topic to interrupt or stop an action from being executed.
 3. **status**: Tells the current status of the server. There are 10 status states - PENDING, ACTIVE, PREEMPTED, SUCCEEDED, ABORTED, REJECTED, PREEMPTING, RECALLING, RECALLED and LOST.
 4. **result**: Provides the final output after executing the action.
 5. **feedback**: Provides us with intermediate results about the action while it is being executed.
@@ -30,7 +30,7 @@ There are 5 Topics provided by an Action Server:
 >**NOTE** - We cannot execute two actions at the same time. Doing so will cancel the previous action from being executed.
 
 ## 6.2 Action files
-The Action definition files have an extension of `.action` and is used to specify the format of _goal_, _result_, _feedback_ message. These files are present in the **action** directory of a package. Here's how a typical service file is defined
+The Action definition files have an extension of `.action` and is used to specify the format of _goal_, _result_, _feedback_ message. These files are present in the **action** directory of a package. Here's how a typical action file is defined
 
 ```BASH
 int32 goal
@@ -45,6 +45,7 @@ int32 feedback
 In order for the service files to run, a few changes have to be made in the *package.xml* file and *CMakeLists.txt* file.
 
 **In *package.xml***
+
 Modify the file to make the following changes, if not done earlier
 
 ```html
@@ -71,6 +72,7 @@ Modify the file to make the following changes, if not done earlier
 ```
 
 **In *CMakeLists.txt***
+
 Modify the file to make the following changes, if not done earlier
 
 ```py
@@ -166,8 +168,6 @@ class Server():
 
         self.res = my_actResult()
         self.res.result = action.threshold
-        # Once the necessary function is executed, the server notifies the client that the goal is complete by calling set_succeeded.
-        self.my_server.set_succeeded(self.res)
 
         print("Success")
         print(action.threshold)  
@@ -176,6 +176,9 @@ class Server():
         # feedback = my_actFeedback()
         # feedback.feed = 10.0 (some float)
         # server.publish_feedback(feedback)
+	
+	# Once the necessary function is executed, the server notifies the client that the goal is complete by calling set_succeeded.
+        self.my_server.set_succeeded(self.res)
         
     
 rospy.init_node('Action_Server')
@@ -230,8 +233,8 @@ r = rospy.Rate(1) #1 Hz
 
 while not rospy.is_shutdown():
 	# Have some condition to print status
-    # status = client.get_state()
-    # print(status)
+    	# status = client.get_state()
+    	# print(status)
 	
 	# wait for result
 	client.wait_for_result()
