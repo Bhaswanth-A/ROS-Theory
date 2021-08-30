@@ -259,3 +259,23 @@ If your get_state() is less than 2, it indicates that your action is still not c
 **Execution**
 
 ![](/Images/act_client.png)
+
+## Turtlesim example
+
+As you can see below, running the following commands instructs turtlesim to move along a pentagon.
+
+![](/Images/act_tur_1.png)
+
+On running `rostopic list` we see a list of all the current topics. `/turtle_shape/goal` is one such topic, which allows you to publish messages to the server through the terminal. It allows us to enter the number of edges and define the radius as well.
+
+![](/Images/act_tur_2.png)
+
+### GUI
+
+The actionlib offers a graphical way to send goal to action server.
+Syntax-
+`rosrun actionlib axclient.py /name_of_the_action`
+
+The GUI has areas for **Goal**, **Feedback** and **Result**. You can press the **SEND GOAL** button to send goals with the relevant parameters, and you can also cancel or preempt a goal anytime with the **CANCEL GOAL** button. After the action finished successfully, the GUI shows the **Result**.
+
+![](/Images/act_tur_3.png)
