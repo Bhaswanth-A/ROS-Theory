@@ -1,8 +1,6 @@
-# ROS tf2
+# 7. ROS tf2
 
-## A bit of Math
-
-## Introduction to TF2
+## 7.1 Introduction to TF2
 
 **TF2** is the second generation of the *transform library*, which lets the user keep track of multiple coordinate frames over time. **TF2** maintains the relationship between coordinate frames over time, and lets the user transform points, vectors, etc. between any two coordinate frames at any desired point in time.
 
@@ -13,7 +11,7 @@ In TF2, **Publishers** are known as **Broadcasters**, and **Subscribers** are kn
 - **Listeners** listen to **/tf** and cache all data heard up to the cache limit.
 - **Broadcasters** publish transforms between coordinate frames on **/tf**.
 
-### Applications of transformations between frames:
+### 7.1.1 Applications of transformations between frames:
 
 The following are some of the applications where the tf2 library can be used:
 
@@ -25,7 +23,7 @@ The following are some of the applications where the tf2 library can be used:
 6.  Analyze multiple robot data in world frame
 7.  Reference external objects w.r.t robot frame
 
-## Demo using turtlesim
+## 7.2 Demo using turtlesim
 
 Enter the following command to install the necessary dependencies and compile the demo package.
 `sudo apt-get install ros-$ROS_DISTRO-turtle-tf2 ros-$ROS_DISTRO-tf2-tools ros-$ROS_DISTRO-tf`
@@ -42,7 +40,7 @@ On entering the above command, you are essentially executing two main things:
 1.  A TF2 broadcaster that is publishing the coordinate frames of both the turtles w.r.t the world frame.
 2.  A TF2 listener that reads the transformations and uses it to calculate the direction in which turtle2 has to move to follow turtle1.
 
-### TF2 tools
+### 7.2.1 TF2 tools
 
 #### view_frames:
 
@@ -98,7 +96,7 @@ On running `rosrun tf tf_echo turtle1 turtle2` you get the following information
 
 #### tf_monitor:
 
-### Better visualization - rviz
+### 7.2.2 Better visualization - rviz
 
 rviz is a visualization tool that is useful for examining tf2 frames.
 
@@ -110,7 +108,7 @@ To open the turtle_tf2 file on rviz, enter the command: `rosrun rviz rviz` and o
 
 > Reference - https://youtu.be/Ra-nXIfPWdg
 
-## Quaternion and Roll-Pitch-Yaw Conversion
+## 7.3 Quaternion and Roll-Pitch-Yaw Conversion
 
 ```python
 #! /usr/bin/python2
@@ -147,7 +145,7 @@ for i in range(0, 3):
 
 ![](/Images/euler.png)
 
-## TF2 Publisher/Broadcaster
+## 7.4 TF2 Publisher/Broadcaster
 
 We shall first create a new catkin package called `learning_tf2` to better understand and demonstrate writing code for publishers and subscribers.
 
@@ -253,7 +251,7 @@ To execute, just run the command `roslaunch learning_tf2 start_demo.launch`.
 
 ![](/Images/br_8.png)
 
-## TF2 Subscriber/Listener
+## 7.5 TF2 Subscriber/Listener
 
 ```python
 #! /usr/bin/python2
@@ -356,11 +354,11 @@ If you drive around turtle1 using your keyboard, you'll find the second turtle f
 
 ![](/Images/l_8.png)
 
-## Adding frames
+## 7.6 Adding frames
 
 Create a new file called **add_frame_1.py** under the `nodes` directory.
 
-### Example 1
+### 7.6.1 Example 1
 
 #### Broadcaster 
 
@@ -481,7 +479,7 @@ while not rospy.is_shutdown():
 
 ![](/Images/fr_ex1_2.png)
 
-### Example 2
+### 7.6.2 Example 2
 
 #### Broadcaster
 
@@ -607,11 +605,11 @@ while not rospy.is_shutdown():
 
 ![](/Images/fr_ex2_2.png)
 
-## Time travel
+## 7.7 Time travel
 
 Let us see how we can get transformations from the past.
 
-### Example 1
+### 7.7.1 Example 1
 Make the following changes in the listener file.
 
 ```python
@@ -628,7 +626,7 @@ The above code asks for the pose of *turtle1* 5 seconds ago relative to turtle2 
 
 ![](/Images/tt_1.png)
 
-### Example 2
+### 7.7.2 Example 2
 
 ```python
 while not rospy.is_shutdown():
