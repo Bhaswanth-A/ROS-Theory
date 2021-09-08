@@ -22,9 +22,10 @@ Listed below are the prerequisites for learning ROS and using this documentation
 1. [Introduction](Introduction.md)
 2. [Tools](Tools.md)
 3. [Topics](Topics-and-Messages.md)
-4. [Messages](Topics-and-Messages.md)
+4. [Messages](https://github.com/Bhaswanth-A/ROS-Theory/blob/main/Topics-and-Messages.md#4-ros-messages)
 5. [Services](Services.md)
 6. [Actions](Actions.md)
+7. [TF2](TF2.md)
 
 
 ## Reference
