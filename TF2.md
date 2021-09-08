@@ -1,4 +1,4 @@
-# 7. ROS tf2
+# 7. ROS TF2
 
 ## 7.1 Introduction to TF2
 
