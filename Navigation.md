@@ -1,6 +1,6 @@
-# ROS Navigation
+# 8. ROS Navigation
 
-## Introduction
+## 8.1 Introduction
 
 The ROS Navigation stack takes in information from odometry, sensor streams, and a goal pose and outputs safe velocity commands that are sent to a mobile base.
 
@@ -10,7 +10,7 @@ The entire process of robot navigation can be divided into 3 major parts:
 - Localization
 - Path Planning
 
-## Mapping
+## 8.2 Mapping
 
 In order to perform autonomous navigation, the robot must have a map of the environment. The robot will use this map for many things such as planning trajectories, avoiding obstacles, etc.
 
@@ -19,13 +19,13 @@ Rviz is a very important tool that will be used extensively in the mapping proce
 - LaserScan Display
 - Map Display
 
-### SLAM
+### 8.2.1 SLAM
 
 Simultaneous Localization and Mapping refers to building a map of an unknown environment while simultaneously keeping track of the robot's location on the map that is being built.
 
 This scenario in Robotics is solved using the **gmapping** package on ROS.
 
-### gmapping package
+### 8.2.2 gmapping package
 
 The gmapping package implements a special SLAM algorithm called ***gmapping***. We don't need to know how to code the alogrithm ourselves but just need to learn how to configure the package for our robot to suit our needs.
 
@@ -84,7 +84,7 @@ The finished map should look something like this.
 
 ![](/Images/Nav/7.png)
 
-### map_server
+### 8.2.3 map_server
 
 **map_server** is a package belonging to the ROS Navigation Stack.
 
@@ -174,7 +174,7 @@ rospy.spin()
 
 ![](/Images/Nav/18.png)
 
-### Creating a SLAM launch file
+### 8.2.4 Creating a SLAM launch file
 
 Till now we have used a previously created gmapping node to obtain a map of the environment. We shall now see how to create our own launch file. The main task to create this launch file is to correctly set the parameters for the turtlebot3\_slam\_gmapping node. This node is highly configurable and has lots of parameters that can be changed in order to improve the mapping performance. These parameters are read from the ROS Parameter Server, which can be set either in the launch file itself or in a separate YAML file.
 
@@ -190,11 +190,11 @@ Till now we have used a previously created gmapping node to obtain a map of the 
 
 You can refer to http://wiki.ros.org/gmapping for the list of various parameters available for the gmapping package.
 
-## Localization
+## 8.3 Localization
 
 In the previous section, we have seen how to obtain a map of the given environment using the robot's sensor data. When the robot uses this map to navigate, it is necessary for it to know its position withing the map, and its orientation as well. Determining the location and pose of a robot by using its sensor readings is known as Localization.
 
-### Monte Carlo Localization
+### 8.3.1 Monte Carlo Localization
 
 Monte Carlo Localization (MCL) or particle filter localization is an algorithm used by robots to localize themselves in an environment. As the robot navigates the environment, the algorithm generates random guesses (called particles) about the next possible position of the robot. As the robot gathers more sensor data, the algo discards particles that don't match with the readings and generates more particles closer to the probable sensor readings. So the more the robot moves, the more data we get from the sensors and the more precise is the localization.
 
@@ -202,7 +202,7 @@ Monte Carlo Localization (MCL) or particle filter localization is an algorithm u
 > [https://en.wikipedia.org/wiki/Monte\_Carlo\_localization](https://en.wikipedia.org/wiki/Monte_Carlo_localization)
 > https://in.mathworks.com/help/nav/ug/monte-carlo-localization-algorithm.html
 
-### amcl package
+### 8.3.2 amcl package
 
 The AMCL (Adaptive Monte Carlo Localization) package provides the **amcl** node which uses the MCL algorithm to track the localization of the robot in 2D space. The node subscribes to the laser data and transformations of the robot, and publishes the estimated position of the robot in the map. On startup, the amcl node initializes its particle filter according to the parameters provided.
 
@@ -254,7 +254,7 @@ On moving your robot around using your keyboard, you will notice that the partic
 
 ![](/Images/Nav/32.png)
 
-### Services
+### 8.3.3 Services
 
 The **amcl** node provides the following services:
 
@@ -330,7 +330,7 @@ rospy.spin()
 
 ![](/Images/Nav/39.png)
 
-### Creating a launch file
+### 8.3.4 Creating a launch file
 
 Till now we have used a previously created amcl node (slightly modified) to obtain a map of the environment. We shall now see how to create our own launch file. As mentioned before, the main task to create a launch file is to correctly set the parameters for the amcl node.
 
@@ -346,9 +346,9 @@ The basic structure of the launch files will be the same as shown above. All you
 
 You can refer to http://wiki.ros.org/amcl for the list of various parameters available for the amcl package.
 
-## Path Planning
+## 8.4 Path Planning
 
-### move_base package
+### 8.4.1 move_base package
 
 The **move_base** package provides the **move_base** node, which is one of the most important elements of the ROS Navigation Stack that links all processes that take place in the navigation process. The main function of the **move_base** node is to move the robot from the current position to the target position. It is an implementation of a *Simple Action server*.
 
@@ -397,7 +397,7 @@ Other relevant topics:
 
 When the **move_base** node receives a goal pose, it links other components such as the global planner, local planner, recovery behaviours, and costmaps, and generates an output which is a velocity command with the message type **geometry_msgs/Twist**, and sends it to the **/cmd_vel** topic in order to move the robot.
 
-### Actions
+### 8.4.2 Actions
 
 As mentioned before, the move_base node is an implementation of an Action Server. This makes it possible for us to send goals, receive feedback and results, and even cancel a goal if necessary. The action server takes a goal pose with the message type *geometry_msgs/PoseStamped*. This allows us to send goals to the server using a simple Action Client.
 
@@ -407,7 +407,7 @@ The Action server provides the topic **move_base/goal**, which is the input of t
 
 Ex 4.4
 
-### Creating a launch file
+### 8.4.3 Creating a launch file
 
 We shall now see how to create our own move_base launch file. This node also has a lot of parameters associated with it that can be configured.
 
@@ -421,7 +421,7 @@ We shall now see how to create our own move_base launch file. This node also has
 
 You can refer to http://wiki.ros.org/move_base for the list of various parameters available for the move_base package.
 
-### The Global Planner
+### 8.4.4 The Global Planner
 
 Whenever a new goal is received by the move_base node, the goal messages are also sent to the global planner. The lobal planner is responsible for calculating a safe path in order to arrive at the goal pose. This path is calculated before the robot starts moving, so it will not take into account the sensor data of the robot while moving.
 
@@ -445,7 +445,7 @@ The Carrot planner takes the goal pose and checks if this goal is an obstacle. I
 
 Reference: https://github.com/ros-planning/navigation/tree/melodic-devel/carrot_planner
 
-### The Local Planner
+### 8.4.5 The Local Planner
 
 Once the global planner has calculated the path to follow, this path is sent to the local planner. The local planner will then execute each segment of the global plan. With the help of the plan provided by the global planner and a map, the local planner will send velocity commands in order to move the robot.
 
@@ -468,7 +468,7 @@ The dwa\_local\_planner provides an implementation of the Dynamic Window Approac
 
 You can find the list of parameters associated with the DWA planner [here](http://wiki.ros.org/dwa_local_planner).
 
-### Costmaps
+### 8.4.6 Costmaps
 
 A costmap is a map that represents place that are safe for the robot to be in a grid of cells. Unusally the values in the costmap are binary, representing either free space orplaces where the robot would be in collision. Each cell in a costmap has an integer value in the range {0,255}.
 
