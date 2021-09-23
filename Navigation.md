@@ -199,7 +199,9 @@ In the previous section, we have seen how to obtain a map of the given environme
 Monte Carlo Localization (MCL) or particle filter localization is an algorithm used by robots to localize themselves in an environment. As the robot navigates the environment, the algorithm generates random guesses (called particles) about the next possible position of the robot. As the robot gathers more sensor data, the algo discards particles that don't match with the readings and generates more particles closer to the probable sensor readings. So the more the robot moves, the more data we get from the sensors and the more precise is the localization.
 
 > Read more
+> 
 > [https://en.wikipedia.org/wiki/Monte\_Carlo\_localization](https://en.wikipedia.org/wiki/Monte_Carlo_localization)
+> 
 > https://in.mathworks.com/help/nav/ug/monte-carlo-localization-algorithm.html
 
 ### 8.3.2 amcl package
@@ -399,7 +401,7 @@ When the **move_base** node receives a goal pose, it links other components such
 
 ### 8.4.2 Actions
 
-As mentioned before, the move_base node is an implementation of an Action Server. This makes it possible for us to send goals, receive feedback and results, and even cancel a goal if necessary. The action server takes a goal pose with the message type *geometry_msgs/PoseStamped*. This allows us to send goals to the server using a simple Action Client.
+As mentioned before, the move_base node is an implementation of an Action Server. This makes it possible for us to send goals, receive feedback and results, and even cancel a goal if necessary. The action server takes a goal pose with the message type ***geometry_msgs/PoseStamped***. This allows us to send goals to the server using a simple Action Client.
 
 The Action server provides the topic **move_base/goal**, which is the input of the navigation stack, and uses this topic to provide the goal pose.
 
