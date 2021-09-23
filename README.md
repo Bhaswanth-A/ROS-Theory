@@ -26,6 +26,7 @@ Listed below are the prerequisites for learning ROS and using this documentation
 5. [Services](Services.md)
 6. [Actions](Actions.md)
 7. [TF2](TF2.md)
+8. [Navigation](Navigation.md)
 
 
 ## Reference
