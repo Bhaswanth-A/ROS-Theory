@@ -115,7 +115,7 @@ response = add_two_intResponse()
 def add_ints(req):
     print('Adding {} + {} '.format(req.a,req.b))
     response.sum = req.a + req.b
-    return response
+    return response.sum
 
 
 rospy.init_node('add_two_int_server')
