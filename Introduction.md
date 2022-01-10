@@ -100,17 +100,6 @@ The package.xml file provides meta information about the package such as package
 
 What does a package.xml file contain?
 
-- The name of your package - You should not change this
-- The version number
-- A short description on the contents of the package
-- Who’s responsible for maintaining the package and fixing the bugs?
-- Licence details
-- A URL, usually pointing to the ROS wiki
-- Author tags
-- Package dependencies
-
-The following tags need to be nested within the &lt; package &gt; tag to make the package manifest complete-&lt; /package &gt;
-
 - *&lt;name&gt;* \- The name of the package
 - *&lt;version&gt;* \- The version number of the package (required to be 3 dot-separated integers)
 - *&lt;description&gt;* \- A description of the package contents
