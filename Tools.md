@@ -41,7 +41,8 @@ rosbash includes the following command-line utilities:
     rospack is a command-line tool that is used to get information about ROS packages available on the filesystem. Below are listed some common rospack options-
     
     - `rospack find` \- returns the absolute path to the package
-    - `rospack depends` \- returns a list of all the package’s dependencies
+    - `rospack depends` \- returns a list of all the package’s dependencies, direct and indirect
+    - `rospack depends1` \- returns a list of the package's primary dependencies
     - `rospack depends-on` \- returns a list of all the packages that depend on the given package
     - `rospack export` \- returns flags necessary for building and linking against a package
     - `rospack list` \- returns a list of all ROS packages on the filesystem
