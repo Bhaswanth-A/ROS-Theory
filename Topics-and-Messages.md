@@ -7,6 +7,7 @@ ROS Topics represent a stream of messages that connect two or more nodes. The no
 - A subscriber node would make a request to roscore to get details about a topic in order to receive the transmitted messages sent through it.
 
 >In ROS, all messages on the same topic must have the same data type.
+>Any number of nodes can publish to a topic as long as they have the same message type.
 
 ## 3.1 Using rostopic
 
