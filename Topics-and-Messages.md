@@ -9,6 +9,8 @@ ROS Topics represent a stream of messages that connect two or more nodes. The no
 >In ROS, all messages on the same topic must have the same data type.
 >Any number of nodes can publish to a topic as long as they have the same message type.
 
+>A ROS Topic cannot be published without initializing a ROS Node.
+
 ## 3.1 Using rostopic
 
 The rostopic command is used to display information about ROS topics that are currently running.
@@ -167,6 +169,8 @@ Line 11: In this line, we subscribe to the topic, giving it the name of the topi
 Line 13: This basically instructs ROS to loop over again, once a subscription has been made.
 
 Behind the scenes, the subscriber passes this information on to roscore and tries to make a direct connection with the publishers of this topic. If the topic does not exist, or if the type is wrong, there are no error messages: the node will simply wait until messages start being published on the topic.
+
+> A subscriber callback function is not executed continuously, that is, it is not processing all the time. It will only process when new data is published.
 
 ![](/Images/sub_2.png)
 
