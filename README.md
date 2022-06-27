@@ -12,7 +12,7 @@ ROS is an open-source project that provides a framework to your robot. It has be
 
 Listed below are the prerequisites for learning ROS and using this documentation for study/reference.
 
-- Ubuntu 18.04 (preferably)
+- Ubuntu 20.04
 - Basic Linux commands
 - Basics of Python programming language 
 
